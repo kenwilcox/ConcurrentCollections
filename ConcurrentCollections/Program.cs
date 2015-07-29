@@ -18,14 +18,19 @@ namespace ConcurrentCollections
 			Task.WaitAll(task1, task2);
 
 			foreach(string order in orders) 
-			{
 				Console.WriteLine("ORDER: " + order);
-			}
+
+			Parallel.ForEach(orders, ProcessOrder);
+		}
+
+		static void ProcessOrder(string order)
+		{
+			Console.WriteLine("Processing Order: " + order);
 		}
 
 		static void PlaceOrders(ConcurrentQueue<string> orders, string customerName)
 		{
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 50; i++)
 			{
 				Thread.Sleep(1);
 				var orderName = string.Format("{0} wants t-shirt {1}", customerName, i + 1);
