@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Collections.Concurrent;
 
 namespace ConcurrentCollections
 {
@@ -11,7 +12,7 @@ namespace ConcurrentCollections
 	{
 		static void Main(string[] args)
 		{
-			var orders = new Queue<string>();
+			var orders = new ConcurrentQueue<string>();
 			var task1 = Task.Run(() => PlaceOrders(orders, "Mark"));
 			var task2 = Task.Run(() => PlaceOrders(orders, "Ramdevi"));
 			Task.WaitAll(task1, task2);
@@ -22,7 +23,7 @@ namespace ConcurrentCollections
 			}
 		}
 
-		static void PlaceOrders(Queue<string> orders, string customerName)
+		static void PlaceOrders(ConcurrentQueue<string> orders, string customerName)
 		{
 			for (int i = 0; i < 5; i++)
 			{
