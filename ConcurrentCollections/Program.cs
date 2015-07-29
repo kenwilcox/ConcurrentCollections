@@ -12,8 +12,9 @@ namespace ConcurrentCollections
 		static void Main(string[] args)
 		{
 			var orders = new Queue<string>();
-			PlaceOrders(orders, "Mark");
-			PlaceOrders(orders, "Ramdevi");
+			var task1 = Task.Run(() => PlaceOrders(orders, "Mark"));
+			var task2 = Task.Run(() => PlaceOrders(orders, "Ramdevi"));
+			Task.WaitAll(task1, task2);
 
 			foreach(string order in orders) 
 			{
