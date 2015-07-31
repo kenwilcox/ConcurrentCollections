@@ -24,10 +24,9 @@ namespace ConcurrentCollections
 
             stock["buddhistgeeks"] = 5;
 
-            success = stock.TryUpdate("pluralsight", 7, 6);
-            Console.WriteLine("pluralsight = {0}, did update work? {1}", stock["pluralsight"], success);
-            success = stock.TryUpdate("pluralsight", 7, 6);
-            Console.WriteLine("pluralsight = {0}, did update work? {1}", stock["pluralsight"], success);
+            //stock["pluralsight"]++; <-- not thread safe two instructions
+            var psStock = stock.AddOrUpdate("pluralsight", 1, (key, oldValue) => oldValue + 1);
+            Console.WriteLine("pluralsight new value = {0}", psStock);
 
             int jDaysValue;
             success= stock.TryRemove("jDays", out jDaysValue);
