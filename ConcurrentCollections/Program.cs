@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Collections.Concurrent;
 
 namespace ConcurrentCollections
 {
-	class Program
+	public static class Program
 	{
-		static void Main(string[] args)
+		static void Main()
 		{
 			var orders = new ConcurrentQueue<string>();
 			var task1 = Task.Run(() => PlaceOrders(orders, "Mark"));
@@ -30,7 +27,7 @@ namespace ConcurrentCollections
 
 		static void PlaceOrders(ConcurrentQueue<string> orders, string customerName)
 		{
-			for (int i = 0; i < 50; i++)
+			for (var i = 0; i < 50; i++)
 			{
 				Thread.Sleep(1);
 				var orderName = string.Format("{0} wants t-shirt {1}", customerName, i + 1);
