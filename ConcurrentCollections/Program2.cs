@@ -11,19 +11,25 @@ namespace ConcurrentCollections
     {
         public static void Main(string[] args)
         {
-            IDictionary<string, int> stock = new ConcurrentDictionary<string, int>();
-            stock.Add("jDays", 4);
-            stock.Add("technologyhour", 3);
+            var stock = new ConcurrentDictionary<string, int>();
+            stock.TryAdd("jDays", 4);
+            stock.TryAdd("technologyhour", 3);
 
             Console.WriteLine("No. of shirts in stock = {0}", stock.Count);
 
-            stock.Add("pluralsight", 6);
+            var success = stock.TryAdd("pluralsight", 6);
+            Console.WriteLine("Added succeeded? " + success);
+            success = stock.TryAdd("pluralsight", 6);
+            Console.WriteLine("Added succeeded? " + success);
+
             stock["buddhistgeeks"] = 5;
 
             stock["pluralsight"] += 1; // we just bought one
             Console.WriteLine("\r\nstock[pluralsight] = {0}", stock["pluralsight"]);
 
-            stock.Remove("jDays");
+            int jDaysValue;
+            success= stock.TryRemove("jDays", out jDaysValue);
+            if (success) Console.WriteLine("Value removed was: " + jDaysValue);
 
             Console.WriteLine("\r\nEnumerating:");
             foreach (var keyValuePair in stock)
