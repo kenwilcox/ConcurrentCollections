@@ -24,8 +24,8 @@ namespace ConcurrentCollections
 
             stock["buddhistgeeks"] = 5;
 
-            stock["pluralsight"] += 1; // we just bought one
-            Console.WriteLine("\r\nstock[pluralsight] = {0}", stock["pluralsight"]);
+            success = stock.TryUpdate("pluralsight", 7, 6);
+            Console.WriteLine("pluralsight = {0}, did update work? {1}", stock["pluralsight"], success);
 
             int jDaysValue;
             success= stock.TryRemove("jDays", out jDaysValue);
