@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,9 @@ namespace ConcurrentCollections
     {
         public static void Main(string[] args)
         {
-            var stock = new Dictionary<string, int>()
-            {
-                {"jDays", 4},
-                {"technologyhour", 3}
-            };
+            IDictionary<string, int> stock = new ConcurrentDictionary<string, int>();
+            stock.Add("jDays", 4);
+            stock.Add("technologyhour", 3);
 
             Console.WriteLine("No. of shirts in stock = {0}", stock.Count);
 
