@@ -24,6 +24,8 @@ namespace ConcurrentCollections
             var psStock = stock.AddOrUpdate("pluralsight", 1, (key, oldValue) => oldValue + 1);
             Console.WriteLine("pluralsight new value = {0}", psStock);
 
+            Console.WriteLine("stock[pluralsight] = {0}", stock.GetOrAdd("pluralsight", 0));
+
             int jDaysValue;
             success= stock.TryRemove("jDays", out jDaysValue);
             if (success) Console.WriteLine("Value removed was: " + jDaysValue);
