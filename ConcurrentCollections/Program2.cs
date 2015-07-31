@@ -26,6 +26,8 @@ namespace ConcurrentCollections
 
             success = stock.TryUpdate("pluralsight", 7, 6);
             Console.WriteLine("pluralsight = {0}, did update work? {1}", stock["pluralsight"], success);
+            success = stock.TryUpdate("pluralsight", 7, 6);
+            Console.WriteLine("pluralsight = {0}, did update work? {1}", stock["pluralsight"], success);
 
             int jDaysValue;
             success= stock.TryRemove("jDays", out jDaysValue);
