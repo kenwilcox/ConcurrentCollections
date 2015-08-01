@@ -39,9 +39,9 @@ namespace BuyAndSell
         public void DisplayStatus()
         {
             var totalStock = _stock.Values.Sum();
-            Console.WriteLine("\r\nBought = " + _totalQuantityBought);
-            Console.WriteLine("Sold   = " + _totalQuantitySold);
-            Console.WriteLine("Stock  = " + totalStock);
+            Console.WriteLine("\r\nBought = {0:n0}", _totalQuantityBought);
+            Console.WriteLine("Sold   = {0:n0}", _totalQuantitySold);
+            Console.WriteLine("Stock  = {0:n0}", totalStock);
             
             var error = totalStock + _totalQuantitySold - _totalQuantityBought;
             if(error == 0)
@@ -53,7 +53,7 @@ namespace BuyAndSell
             foreach (var itemName in Program.AllShirtNames)
             {
                 var stockLevel = _stock.GetOrAdd(itemName, 0);
-                Console.WriteLine("{0,-30}: {1}", itemName, stockLevel);
+                Console.WriteLine("{0,-30}: {1:n0}", itemName, stockLevel);
             }
         }
     }

@@ -18,19 +18,19 @@ namespace BuyAndSell
             var start = DateTime.Now;
             while (DateTime.Now - start < workDay)
             {
-                Thread.Sleep(rand.Next(100));
+                //Thread.Sleep(rand.Next(100));
                 var buy = (rand.Next(6) == 0);
                 var itemName = Program.AllShirtNames[rand.Next((Program.AllShirtNames.Count))];
                 if (buy)
                 {
                     var quantity = rand.Next(9) + 1;
                     stockController.BuyStock(itemName, quantity);
-                    DisplayPurchase(itemName, quantity);
+                    //DisplayPurchase(itemName, quantity);
                 }
                 else
                 {
                     var success = stockController.TrySellItem(itemName);
-                    DisplaySaleAttempt(success, itemName);
+                    //DisplaySaleAttempt(success, itemName);
                 }
             }
             Console.WriteLine("SalesPerson {0} signing off", Name);
