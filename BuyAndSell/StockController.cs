@@ -1,4 +1,6 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Linq;
 using System.Threading;
 
 namespace BuyAndSell
@@ -34,9 +36,38 @@ namespace BuyAndSell
             return success;
         }
 
-        public static void DisplayStatus()
+        // A different way of doing it
+        public bool TrySellItem2(string item)
         {
+            var newStockLevel = _stock.AddOrUpdate(item, -1, (key, oldValue) => oldValue - 1);
+            if (newStockLevel < 0)
+            {
+                _stock.AddOrUpdate(item, 1, (key, oldValue) => oldValue + 1);
+                return false;
+            }
+            Interlocked.Increment(ref _totalQuantitySold);
+            return true;
+        }
+
+        public void DisplayStatus()
+        {
+            var totalStock = _stock.Values.Sum();
+            Console.WriteLine("\r\nBought = " + _totalQuantityBought);
+            Console.WriteLine("Sold   = " + _totalQuantitySold);
+            Console.WriteLine("Stock  = " + totalStock);
             
+            var error = totalStock + _totalQuantitySold - _totalQuantityBought;
+            if(error == 0)
+                Console.WriteLine("Stock levels match");
+            else
+                Console.WriteLine("Error in stock level: " + error);
+
+            Console.WriteLine("\r\nStock levels by item:");
+            foreach (var itemName in Program.AllShirtNames)
+            {
+                var stockLevel = _stock.GetOrAdd(itemName, 0);
+                Console.WriteLine("{0,-30}: {1}", itemName, stockLevel);
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ namespace BuyAndSell
             var t4 = Task.Run(() => new SalesPerson("Xavier").Work(controller, workDay));
 
             Task.WaitAll(t1, t2, t3, t4);
-            StockController.DisplayStatus();
+            controller.DisplayStatus();
         }
     }
 }
