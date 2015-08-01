@@ -14,22 +14,22 @@ namespace BuyAndSell
 
         public void Work(StockController stockController, TimeSpan workDay)
         {
-            Random rand = new Random(Name.GetHashCode());
-            DateTime start = DateTime.Now;
+            var rand = new Random(Name.GetHashCode());
+            var start = DateTime.Now;
             while (DateTime.Now - start < workDay)
             {
                 Thread.Sleep(rand.Next(100));
-                bool buy = (rand.Next(6) == 0);
-                string itemName = Program.AllShirtNames[rand.Next((Program.AllShirtNames.Count))];
+                var buy = (rand.Next(6) == 0);
+                var itemName = Program.AllShirtNames[rand.Next((Program.AllShirtNames.Count))];
                 if (buy)
                 {
-                    int quantity = rand.Next(9) + 1;
+                    var quantity = rand.Next(9) + 1;
                     stockController.BuyStock(itemName, quantity);
                     DisplayPurchase(itemName, quantity);
                 }
                 else
                 {
-                    bool success = stockController.TrySellItem(itemName);
+                    var success = stockController.TrySellItem(itemName);
                     DisplaySaleAttempt(success, itemName);
                 }
             }
@@ -38,11 +38,8 @@ namespace BuyAndSell
 
         private void DisplaySaleAttempt(bool success, string itemName)
         {
-            int threadId = Thread.CurrentThread.ManagedThreadId;
-            if(success)
-                Console.WriteLine("Thread {0}: {1} sold {2}", threadId, Name, itemName);
-            else
-                Console.WriteLine("Thread {0}: {1}: Out of stock of {2}", threadId, Name, itemName);
+            var threadId = Thread.CurrentThread.ManagedThreadId;
+            Console.WriteLine(success ? "Thread {0}: {1} sold {2}" : "Thread {0}: {1}: Out of stock of {2}", threadId, Name, itemName);
         }
 
         private void DisplayPurchase(string itemName, int quantity)

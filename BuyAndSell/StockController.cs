@@ -36,19 +36,6 @@ namespace BuyAndSell
             return success;
         }
 
-        // A different way of doing it
-        public bool TrySellItem2(string item)
-        {
-            var newStockLevel = _stock.AddOrUpdate(item, -1, (key, oldValue) => oldValue - 1);
-            if (newStockLevel < 0)
-            {
-                _stock.AddOrUpdate(item, 1, (key, oldValue) => oldValue + 1);
-                return false;
-            }
-            Interlocked.Increment(ref _totalQuantitySold);
-            return true;
-        }
-
         public void DisplayStatus()
         {
             var totalStock = _stock.Values.Sum();
