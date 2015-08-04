@@ -7,21 +7,21 @@ namespace ConcurrentQueueDemo
     {
         static void Main()
         {
-            var shirts = new ConcurrentQueue<string>();
-            shirts.Enqueue("Pluralsight");
-            shirts.Enqueue("WordPress");
-            shirts.Enqueue("Code School");
+            var shirts = new ConcurrentStack<string>();
+            shirts.Push("Pluralsight");
+            shirts.Push("WordPress");
+            shirts.Push("Code School");
 
             Console.WriteLine("After enqueuing, count = " + shirts.Count);
 
-            string item1; //= shirts.Dequeue();
-            var success = shirts.TryDequeue(out item1);
+            string item1;
+            var success = shirts.TryPop(out item1);
             if (success)
                 Console.WriteLine("\r\nRemoving " + item1);
             else
                 Console.WriteLine("Queue was Empty");
 
-            string item2;// = shirts.Peek();
+            string item2;
             success = shirts.TryPeek(out item2);
             if (success)
                 Console.WriteLine("Peeking   " + item2);
