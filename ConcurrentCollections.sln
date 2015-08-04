@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyAndSell", "BuyAndSell\BuyAndSell.csproj", "{D9B9DEFE-6462-481C-95A7-62E96C22747E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentQueueDemo", "ConcurrentQueueDemo\ConcurrentQueueDemo.csproj", "{ACDE13D2-7A31-4E9A-8736-C8ED5188E43A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D9B9DEFE-6462-481C-95A7-62E96C22747E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9B9DEFE-6462-481C-95A7-62E96C22747E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9B9DEFE-6462-481C-95A7-62E96C22747E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACDE13D2-7A31-4E9A-8736-C8ED5188E43A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACDE13D2-7A31-4E9A-8736-C8ED5188E43A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACDE13D2-7A31-4E9A-8736-C8ED5188E43A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACDE13D2-7A31-4E9A-8736-C8ED5188E43A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
