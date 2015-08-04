@@ -7,10 +7,10 @@ namespace ConcurrentQueueDemo
     {
         static void Main()
         {
-            var shirts = new ConcurrentBag<string>();
-            shirts.Add("Pluralsight");
-            shirts.Add("WordPress");
-            shirts.Add("Code School");
+            IProducerConsumerCollection<string> shirts = new ConcurrentBag<string>();
+            shirts.TryAdd("Pluralsight");
+            shirts.TryAdd("WordPress");
+            shirts.TryAdd("Code School");
 
             Console.WriteLine("After enqueuing, count = " + shirts.Count);
 
@@ -20,13 +20,6 @@ namespace ConcurrentQueueDemo
                 Console.WriteLine("\r\nRemoving " + item1);
             else
                 Console.WriteLine("Queue was Empty");
-
-            string item2;
-            success = shirts.TryPeek(out item2);
-            if (success)
-                Console.WriteLine("Peeking   " + item2);
-            else
-                Console.WriteLine("Queue was empty");
 
             Console.WriteLine("\r\nEnumerating:");
             foreach (var item in shirts)
