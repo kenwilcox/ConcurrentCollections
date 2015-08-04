@@ -7,15 +7,15 @@ namespace ConcurrentQueueDemo
     {
         static void Main()
         {
-            var shirts = new ConcurrentStack<string>();
-            shirts.Push("Pluralsight");
-            shirts.Push("WordPress");
-            shirts.Push("Code School");
+            var shirts = new ConcurrentBag<string>();
+            shirts.Add("Pluralsight");
+            shirts.Add("WordPress");
+            shirts.Add("Code School");
 
             Console.WriteLine("After enqueuing, count = " + shirts.Count);
 
             string item1;
-            var success = shirts.TryPop(out item1);
+            var success = shirts.TryTake(out item1);
             if (success)
                 Console.WriteLine("\r\nRemoving " + item1);
             else
