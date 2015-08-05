@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyAndSell", "BuyAndSell\Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentQueueDemo", "ConcurrentQueueDemo\ConcurrentQueueDemo.csproj", "{ACDE13D2-7A31-4E9A-8736-C8ED5188E43A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesBonuses", "SalesBonuses\SalesBonuses.csproj", "{BCC69D00-9240-4565-AF16-A13EFAD23C26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{ACDE13D2-7A31-4E9A-8736-C8ED5188E43A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACDE13D2-7A31-4E9A-8736-C8ED5188E43A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACDE13D2-7A31-4E9A-8736-C8ED5188E43A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCC69D00-9240-4565-AF16-A13EFAD23C26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCC69D00-9240-4565-AF16-A13EFAD23C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCC69D00-9240-4565-AF16-A13EFAD23C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCC69D00-9240-4565-AF16-A13EFAD23C26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
