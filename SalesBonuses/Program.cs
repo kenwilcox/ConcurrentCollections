@@ -27,7 +27,7 @@ namespace SalesBonuses
             };
 
             var controller = new StockController(toDoQueue);
-            var workDay = new TimeSpan(0, 0, 1);
+            var workDay = new TimeSpan(0, 0, 5);
 
             var t1 = Task.Run(() => people[0].Work(controller, workDay));
             var t2 = Task.Run(() => people[1].Work(controller, workDay));

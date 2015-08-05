@@ -33,13 +33,13 @@ namespace SalesBonuses
         {
             while (true)
             {
-                Trade nexTrade;
-                var done = _queue.TryDequeue(out nexTrade);
+                Trade nextTrade;
+                var done = _queue.TryDequeue(out nextTrade);
                 
                 if (done)
                 {
                     _staffLogs.ProcessTrade(nextTrade);
-                    Console.WriteLine("Processing transaction from " + nexTrade.Person.Name);
+                    Console.WriteLine("Processing transaction from " + nextTrade.Person.Name);
                 }
                 else if (_workingDayComplete)
                 {
