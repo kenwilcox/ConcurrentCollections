@@ -10,8 +10,7 @@ namespace SalesBonuses
 {
     public class ToDoQueue
     {
-        private readonly ConcurrentQueue<Trade> _queue = new ConcurrentQueue<Trade>();
-        private bool _workingDayComplete = false;
+        private readonly BlockingCollection<Trade> _queue = new BlockingCollection<Trade>(new ConcurrentQueue<Trade>());
         private readonly StaffLogForBonuses _staffLogs;
 
         public ToDoQueue(StaffLogForBonuses staffResults)
@@ -21,35 +20,28 @@ namespace SalesBonuses
 
         public void AddTrade(Trade transaction)
         {
-            _queue.Enqueue(transaction);
+            _queue.Add(transaction);
         }
 
         public void CompleteAdding()
         {
-            _workingDayComplete = true;
+            _queue.CompleteAdding();
         }
 
         public void MonitorAndLogTrades()
         {
             while (true)
             {
-                Trade nextTrade;
-                var done = _queue.TryDequeue(out nextTrade);
-                
-                if (done)
+                try
                 {
-                    _staffLogs.ProcessTrade(nextTrade);
-                    Console.WriteLine("Processing transaction from " + nextTrade.Person.Name);
+                    var nextTransaction = _queue.Take();
+                    _staffLogs.ProcessTrade(nextTransaction);
+                    Console.WriteLine("Processing transaction from " + nextTransaction.Person.Name);
                 }
-                else if (_workingDayComplete)
+                catch (InvalidOperationException ex)
                 {
-                    Console.WriteLine("No more sales to log - exiting");
+                    Console.WriteLine(ex.Message);
                     return;
-                }
-                else
-                {
-                    Console.WriteLine("No transactions availble");
-                    Thread.Sleep(500);
                 }
             }
         }
