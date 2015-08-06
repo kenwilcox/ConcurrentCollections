@@ -20,6 +20,10 @@ namespace Benchmarks
             Console.WriteLine("\r\nConcurrentDictionary, single thread:");
             var dict2 = new ConcurrentDictionary<int, int>();
             SingleThreadBenchmark.TimeDict(dict2, dictSize);
+
+            Console.WriteLine("\r\nConcurrentDictionary, multiple threads:");
+            dict2 = new ConcurrentDictionary<int, int>();
+            ParallelBenchmark.TimeDictParallel(dict2, dictSize);
         }
     }
 }
