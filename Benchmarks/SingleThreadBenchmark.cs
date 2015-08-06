@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Benchmarks
 {
-    class SingleThreadBenchmark
+    static class SingleThreadBenchmark
     {
         static void PopulateDict(IDictionary<int, int> dict, int dictSize)
         {

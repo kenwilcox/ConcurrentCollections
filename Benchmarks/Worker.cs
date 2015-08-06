@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Benchmarks
 {
     public static class Worker
     {
         public static int DoSomethingTimeConsuming()
         {
-            int total = 0;
-            for (int i = 0; i < 1000; i++)
+            var total = 0;
+            for (var i = 0; i < 1000; i++)
                 total += i;
             return total;
         }
