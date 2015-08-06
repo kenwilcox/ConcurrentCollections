@@ -20,6 +20,7 @@ namespace Benchmarks
             for (var i = 0; i < dictSize; i++)
             {
                 dict[i] += 1;
+                Worker.DoSomethingTimeConsuming();
             }
         }
 
@@ -29,6 +30,7 @@ namespace Benchmarks
             foreach (var item in dict)
             {
                 total += dict[item.Value];
+                Worker.DoSomethingTimeConsuming();
             }
             return total;
         }

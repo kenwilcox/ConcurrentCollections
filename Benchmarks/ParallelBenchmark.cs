@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ namespace Benchmarks
             {
                 bool done = dict.TryUpdate(i, 1, 0);
                 if (!done) throw new Exception("Error updating. Old value was " + dict[i]);
+                Worker.DoSomethingTimeConsuming();
             });
         }
 
@@ -29,6 +31,7 @@ namespace Benchmarks
             Parallel.ForEach(dict, keyValPair =>
             {
                 Interlocked.Add(ref total, keyValPair.Value);
+                Worker.DoSomethingTimeConsuming();
             });
             return total;
         }
