@@ -19,7 +19,7 @@ namespace Benchmarks
 
             for (var i = 0; i < dictSize; i++)
             {
-                dict[i] += i;
+                dict[i] += 1;
             }
         }
 

@@ -13,10 +13,13 @@ namespace Benchmarks
         {
             var dictSize = 1000000;
 
-            Console.WriteLine("Dictionary, single threaded:");
+            Console.WriteLine("Dictionary, single thread:");
             var dict = new Dictionary<int, int>();
             SingleThreadBenchmark.TimeDict(dict, dictSize);
 
+            Console.WriteLine("\r\nConcurrentDictionary, single thread:");
+            var dict2 = new ConcurrentDictionary<int, int>();
+            SingleThreadBenchmark.TimeDict(dict2, dictSize);
         }
     }
 }
