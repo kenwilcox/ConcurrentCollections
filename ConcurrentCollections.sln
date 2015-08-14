@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentCollections", "ConcurrentCollections\ConcurrentCollections.csproj", "{E8DEF76F-AD5D-4465-88C4-46FFA665EC97}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesBonuses", "SalesBonuses\SalesBonuses.csproj", "{BCC69D00-9240-4565-AF16-A13EFAD23C26}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarks", "Benchmarks\Benchmarks.csproj", "{F1219655-8F6E-419C-B9DC-F5899E76F8E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumerateDictionary", "EnumerateDictionary\EnumerateDictionary.csproj", "{8C600B5F-B030-4592-86D8-CA34FAF92F3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{F1219655-8F6E-419C-B9DC-F5899E76F8E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1219655-8F6E-419C-B9DC-F5899E76F8E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1219655-8F6E-419C-B9DC-F5899E76F8E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C600B5F-B030-4592-86D8-CA34FAF92F3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C600B5F-B030-4592-86D8-CA34FAF92F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C600B5F-B030-4592-86D8-CA34FAF92F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C600B5F-B030-4592-86D8-CA34FAF92F3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
