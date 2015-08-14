@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 
 namespace EnumerateDictionary
 {
@@ -7,18 +7,19 @@ namespace EnumerateDictionary
     {
         static void Main()
         {
-            var stock = new Dictionary<string, int>
-            {
-                {"jDays", 0},
-                { "Code School", 0},
-                { "Buddhist Geeks", 0}
-            };
+            var stock = new ConcurrentDictionary<string, int>();
+            stock.TryAdd("jDays", 0);
+            stock.TryAdd("Code School", 0);
+            stock.TryAdd("Buddhist Geeks", 0);
 
             foreach (var shirt in stock)
             {
-                stock["jDays"] += 1;
+                var ret = stock.AddOrUpdate("jDays", 0, (key, value) => value + 1);
+                Console.WriteLine("Return: " + ret);
                 Console.WriteLine(shirt.Key + ": " + shirt.Value);
             }
+
+            Console.WriteLine("jDays: " + stock["jDays"]);
         }
     }
 }
